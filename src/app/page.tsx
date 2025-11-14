@@ -431,10 +431,7 @@ function PlansScreen({ userData, onNext }: { userData: any; onNext: () => void }
       borderColor: "border-gray-600",
       popular: false,
       highlight: true,
-      paymentLinks: {
-        kiwify: "https://pay.kiwify.com.br/P1L7AnV",
-        mercadopago: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=316db666e39545fc97eb8bc71454cdde"
-      }
+      paymentLink: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=316db666e39545fc97eb8bc71454cdde"
     },
     {
       id: "pro",
@@ -453,10 +450,7 @@ function PlansScreen({ userData, onNext }: { userData: any; onNext: () => void }
       color: "from-emerald-600 to-emerald-700",
       borderColor: "border-emerald-500",
       popular: true,
-      paymentLinks: {
-        kiwify: "https://pay.kiwify.com.br/RVnSnGi",
-        mercadopago: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=d752610fb7494d9ca72dc3e505fce589"
-      }
+      paymentLink: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=d752610fb7494d9ca72dc3e505fce589"
     },
     {
       id: "master",
@@ -478,18 +472,12 @@ function PlansScreen({ userData, onNext }: { userData: any; onNext: () => void }
       borderColor: "border-yellow-500",
       popular: false,
       promo: true,
-      paymentLinks: {
-        kiwify: "https://pay.kiwify.com.br/UoJLHVm",
-        mercadopago: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=78411e52239547dc87134b7f83ddf324"
-      }
+      paymentLink: "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=78411e52239547dc87134b7f83ddf324"
     }
   ];
 
-  const handleSelectPlan = (paymentLinks: { kiwify: string; mercadopago: string }) => {
-    // Abre modal de escolha de pagamento
-    const choice = window.confirm("Escolha sua forma de pagamento:\n\nOK = Kiwify\nCancelar = Mercado Pago");
-    const link = choice ? paymentLinks.kiwify : paymentLinks.mercadopago;
-    window.open(link, '_blank');
+  const handleSelectPlan = (paymentLink: string) => {
+    window.open(paymentLink, '_blank');
   };
 
   return (
@@ -580,7 +568,7 @@ function PlansScreen({ userData, onNext }: { userData: any; onNext: () => void }
               </ul>
 
               <Button
-                onClick={() => handleSelectPlan(plan.paymentLinks)}
+                onClick={() => handleSelectPlan(plan.paymentLink)}
                 className="w-full bg-white text-black hover:bg-gray-100 font-bold py-6 text-lg rounded-xl shadow-lg transition-all hover:scale-105"
               >
                 Assinar Agora
@@ -592,7 +580,7 @@ function PlansScreen({ userData, onNext }: { userData: any; onNext: () => void }
 
         {/* CTA Adicional */}
         <div className="text-center">
-          <p className="text-gray-400 text-sm">Pagamento 100% seguro via Kiwify e Mercado Pago • Cancele quando quiser</p>
+          <p className="text-gray-400 text-sm">Pagamento 100% seguro via Mercado Pago • Cancele quando quiser</p>
         </div>
       </div>
     </div>
